@@ -4,6 +4,19 @@
  * See LICENSE.md in the project directory for license information.
 --]]
 
+--filter(predicate, list)
+function filter(predicate, list)
+  output = {}
+  for _, v in ipairs(list) do
+    if predicate(v) then output[#output+1] = v end
+  end
+  return output
+end
+
+function isLogisticTrainStop(stopID)
+  return global.LogisticTrainStop(stopID)
+end
+
 --GetTrainCapacity(train)
 local function getCargoWagonCapacity(entity)
   local capacity = entity.prototype.get_inventory_size(defines.inventory.cargo_wagon)
